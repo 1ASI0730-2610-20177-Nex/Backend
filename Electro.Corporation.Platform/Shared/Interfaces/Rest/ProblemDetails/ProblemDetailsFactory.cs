@@ -6,7 +6,7 @@ using Microsoft.Extensions.Localization;
 
 namespace Electro.Corporation.Platform.Shared.Interfaces.Rest.ProblemDetails;
 
-public class ProblemDetailsFactory
+public class iProblemDetailsFactory
 {
     private readonly Microsoft.AspNetCore.Mvc.Infrastructure.ProblemDetailsFactory
         _aspNetCoreProblemDetailsFactory; // Corrected type and name
