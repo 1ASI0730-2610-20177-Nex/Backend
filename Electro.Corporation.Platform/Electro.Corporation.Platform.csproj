@@ -85,6 +85,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Devices\" />
       <Folder Include="Shared\" />
     </ItemGroup>
 
