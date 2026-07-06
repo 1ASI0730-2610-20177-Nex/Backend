@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <data name="GenericError" xml:space="preserve">
+    <value>An error occurred.</value>
+  </data>
+    <data name="OperationCancelled" xml:space="preserve">
+    <value>The operation was cancelled.</value>
+  </data>
+
+    <data name="ProfileError.UserNotFound" xml:space="preserve">
+    <value>User not found.</value>
+  </data>
+    <data name="ProfileError.EmailAlreadyRegistered" xml:space="preserve">
+    <value>Email address {0} is already registered.</value>
+  </data>
+    <data name="ProfileError.OperationCancelled" xml:space="preserve">
+    <value>Profile operation was cancelled.</value>
+  </data>
+    <data name="ProfileError.DatabaseError" xml:space="preserve">
+    <value>A database error occurred during profile operation.</value>
+  </data>
+    <data name="ProfileError.InternalServerError" xml:space="preserve">
+    <value>An unexpected internal error occurred in Profile.</value>
+  </data>
+
+    <data name="DevicesError.HomeNotFound" xml:space="preserve">
+    <value>Home not found.</value>
+  </data>
+    <data name="DevicesError.DeviceNotFound" xml:space="preserve">
+    <value>Device not found.</value>
+  </data>
+    <data name="DevicesError.OperationCancelled" xml:space="preserve">
+    <value>Devices operation was cancelled.</value>
+  </data>
+    <data name="DevicesError.DatabaseError" xml:space="preserve">
+    <value>A database error occurred during devices operation.</value>
+  </data>
+    <data name="DevicesError.InternalServerError" xml:space="preserve">
+    <value>An unexpected internal error occurred in Devices.</value>
+  </data>
+
+    <data name="AnalyticsError.ConsumptionNotFound" xml:space="preserve">
+    <value>Consumption not found.</value>
+  </data>
+    <data name="AnalyticsError.OperationCancelled" xml:space="preserve">
+    <value>Analytics operation was cancelled.</value>
+  </data>
+    <data name="AnalyticsError.DatabaseError" xml:space="preserve">
+    <value>A database error occurred during analytics operation.</value>
+  </data>
+    <data name="AnalyticsError.InternalServerError" xml:space="preserve">
+    <value>An unexpected internal error occurred in Analytics.</value>
+  </data>
+</root>
