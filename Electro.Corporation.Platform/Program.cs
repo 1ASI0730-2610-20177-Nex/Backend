@@ -12,15 +12,29 @@ using Electro.Corporation.Platform.Devices.Application.QueryServices;
 using Electro.Corporation.Platform.Devices.Domain.Repositories;
 using Electro.Corporation.Platform.Devices.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
 using Electro.Corporation.Platform.Devices.Resources;
-/*
-using Electro.Corporation.Platform.Profile.Application.CommandServices;
-using Electro.Corporation.Platform.Profile.Application.Internal.CommandServices;
-using Electro.Corporation.Platform.Profile.Application.Internal.QueryServices;
-using Electro.Corporation.Platform.Profile.Application.QueryServices;
-using Electro.Corporation.Platform.Profile.Domain.Repositories;
-using Electro.Corporation.Platform.Profile.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
-using Electro.Corporation.Platform.Profile.Resources;
-*/
+using Electro.Corporation.Platform.Iam.Application.Acl;
+using Electro.Corporation.Platform.Iam.Application.CommandServices;
+using Electro.Corporation.Platform.Iam.Application.Internal.CommandServices;
+using Electro.Corporation.Platform.Iam.Application.Internal.OutboundServices;
+using Electro.Corporation.Platform.Iam.Application.Internal.QueryServices;
+using Electro.Corporation.Platform.Iam.Application.QueryServices;
+using Electro.Corporation.Platform.Iam.Domain.Repositories;
+using Electro.Corporation.Platform.Iam.Infrastructure.Hashing.BCrypt.Services;
+using Electro.Corporation.Platform.Iam.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
+using Electro.Corporation.Platform.Iam.Infrastructure.Pipeline.Middleware.Extensions;
+using Electro.Corporation.Platform.Iam.Infrastructure.Tokens.Jwt.Configuration;
+using Electro.Corporation.Platform.Iam.Infrastructure.Tokens.Jwt.Services;
+using Electro.Corporation.Platform.Iam.Interfaces.Acl;
+using Electro.Corporation.Platform.Iam.Resources;
+using Electro.Corporation.Platform.Profiles.Application.Acl;
+using Electro.Corporation.Platform.Profiles.Application.CommandServices;
+using Electro.Corporation.Platform.Profiles.Application.Internal.CommandServices;
+using Electro.Corporation.Platform.Profiles.Application.Internal.QueryServices;
+using Electro.Corporation.Platform.Profiles.Application.QueryServices;
+using Electro.Corporation.Platform.Profiles.Domain.Repositories;
+using Electro.Corporation.Platform.Profiles.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
+using Electro.Corporation.Platform.Profiles.Interfaces.Acl;
+using Electro.Corporation.Platform.Profiles.Resources;
 using Electro.Corporation.Platform.Resources.Errors;
 using Electro.Corporation.Platform.Resources.Shared;
 using Electro.Corporation.Platform.Shared.Domain.Repositories;
@@ -35,6 +49,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.OpenApi;
 using ProblemDetailsFactory = Electro.Corporation.Platform.Shared.Interfaces.Rest.ProblemDetails.ProblemDetailsFactory;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -74,11 +89,16 @@ builder.Services.AddLocalization(options => options.ResourcesPath = "Resources")
 
 builder.Services.AddSingleton<IStringLocalizer<ErrorMessages>, StringLocalizer<ErrorMessages>>();
 builder.Services.AddSingleton<IStringLocalizer<CommonMessages>, StringLocalizer<CommonMessages>>();
-//builder.Services.AddSingleton<IStringLocalizer<ProfileMessages>, StringLocalizer<ProfileMessages>>();
+builder.Services.AddSingleton<IStringLocalizer<IamMessages>, StringLocalizer<IamMessages>>();
+builder.Services.AddSingleton<IStringLocalizer<ProfilesMessages>, StringLocalizer<ProfilesMessages>>();
 builder.Services.AddSingleton<IStringLocalizer<DevicesMessages>, StringLocalizer<DevicesMessages>>();
 builder.Services.AddSingleton<IStringLocalizer<AnalyticsMessages>, StringLocalizer<AnalyticsMessages>>();
 
 builder.Services.AddSingleton<ProblemDetailsFactory>();
+
+builder.Services.Configure<TokenSettings>(builder.Configuration.GetSection("TokenSettings"));
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IHashingService, HashingService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -106,10 +126,17 @@ builder.Services.AddSwaggerGen(options =>
 // Shared Bounded Context
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-// Profile Bounded Context
-//builder.Services.AddScoped<IUserRepository, UserRepository>();
-//builder.Services.AddScoped<IUserCommandService, UserCommandService>();
-//builder.Services.AddScoped<IUserQueryService, UserQueryService>();
+// IAM Bounded Context
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserCommandService, UserCommandService>();
+builder.Services.AddScoped<IUserQueryService, UserQueryService>();
+builder.Services.AddScoped<IIamContextFacade, IamContextFacade>();
+
+// Profiles Bounded Context
+builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
+builder.Services.AddScoped<IProfileCommandService, ProfileCommandService>();
+builder.Services.AddScoped<IProfileQueryService, ProfileQueryService>();
+builder.Services.AddScoped<IProfilesContextFacade, ProfilesContextFacade>();
 
 // Devices Bounded Context
 builder.Services.AddScoped<IHomeRepository, HomeRepository>();
@@ -155,6 +182,8 @@ if (app.Environment.IsDevelopment())
 app.UseCors("AllowAllPolicy");
 
 app.UseHttpsRedirection();
+
+app.UseRequestAuthorization();
 
 app.MapControllers();
 

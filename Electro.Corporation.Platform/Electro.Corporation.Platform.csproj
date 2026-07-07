@@ -85,10 +85,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Analytics\" />
-      <Folder Include="Devices\" />
-      <Folder Include="Iam\" />
-      <Folder Include="Profiles\" />
       <Folder Include="Shared\" />
     </ItemGroup>
 

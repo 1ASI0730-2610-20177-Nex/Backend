@@ -37,5 +37,14 @@ public static class ModelBuilderExtensions
                 a.Property(s => s.PostalCode).HasColumnName("AddressPostalCode");
                 a.Property(s => s.Country).HasColumnName("AddressCountry");
             });
+
+        builder.Entity<Profile>().OwnsOne(p => p.Preferences,
+            pr =>
+            {
+                pr.WithOwner().HasForeignKey("Id");
+                pr.Property(p => p.Language).HasColumnName("PreferenceLanguage");
+                pr.Property(p => p.Theme).HasColumnName("PreferenceTheme");
+                pr.Property(p => p.NotificationsEnabled).HasColumnName("PreferenceNotificationsEnabled");
+            });
     }
 }

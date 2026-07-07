@@ -20,4 +20,6 @@ public interface IProfileRepository : IBaseRepository<Profile>
     ///     The <see cref="Profile" /> if found, otherwise null
     /// </returns>
     Task<Profile?> FindProfileByEmailAsync(EmailAddress email, CancellationToken cancellationToken);
+
+    Task<Profile?> FindProfileByUserIdAsync(int userId, CancellationToken cancellationToken);
 }

@@ -34,10 +34,54 @@ public class ProfileCommandService(
             return Result<Profile>.Failure(ProfilesError.EmailAlreadyRegistered,
                 _localizer[nameof(ProfilesError.EmailAlreadyRegistered), command.Email]);
 
+        var existingByUser = await profileRepository.FindProfileByUserIdAsync(command.UserId, cancellationToken);
+        if (existingByUser is not null)
+            return Result<Profile>.Failure(ProfilesError.EmailAlreadyRegistered,
+                _localizer[nameof(ProfilesError.EmailAlreadyRegistered), command.Email]);
+
         var profile = new Profile(command);
+        return await SaveProfileAsync(profile, cancellationToken);
+    }
+
+    public async Task<Result<Profile>> Handle(UpdateProfileCommand command, CancellationToken cancellationToken)
+    {
+        var profile = await profileRepository.FindByIdAsync(command.ProfileId, cancellationToken);
+        if (profile is null)
+            return Result<Profile>.Failure(ProfilesError.ProfileNotFound,
+                _localizer[nameof(ProfilesError.ProfileNotFound)]);
+
+        var email = new EmailAddress(command.Email);
+        var existingProfile = await profileRepository.FindProfileByEmailAsync(email, cancellationToken);
+        if (existingProfile is not null && existingProfile.Id != command.ProfileId)
+            return Result<Profile>.Failure(ProfilesError.EmailAlreadyRegistered,
+                _localizer[nameof(ProfilesError.EmailAlreadyRegistered), command.Email]);
+
+        profile.Update(command);
+        return await SaveProfileAsync(profile, cancellationToken, update: true);
+    }
+
+    public async Task<Result<Profile>> Handle(UpdateProfilePreferencesCommand command,
+        CancellationToken cancellationToken)
+    {
+        var profile = await profileRepository.FindByIdAsync(command.ProfileId, cancellationToken);
+        if (profile is null)
+            return Result<Profile>.Failure(ProfilesError.ProfileNotFound,
+                _localizer[nameof(ProfilesError.ProfileNotFound)]);
+
+        profile.UpdatePreferences(command);
+        return await SaveProfileAsync(profile, cancellationToken, update: true);
+    }
+
+    private async Task<Result<Profile>> SaveProfileAsync(Profile profile, CancellationToken cancellationToken,
+        bool update = false)
+    {
         try
         {
-            await profileRepository.AddAsync(profile, cancellationToken);
+            if (update)
+                profileRepository.Update(profile);
+            else
+                await profileRepository.AddAsync(profile, cancellationToken);
+
             await unitOfWork.CompleteAsync(cancellationToken);
             return Result<Profile>.Success(profile);
         }

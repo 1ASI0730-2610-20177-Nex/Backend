@@ -25,6 +25,15 @@ public static class ProfileResourceFromEntityAssembler
         if (entity == null)
             throw new ArgumentNullException(nameof(entity),
                 "Profile entity cannot be null when converting to resource.");
-        return new ProfileResource(entity.Id, entity.UserId, entity.FullName, entity.EmailAddress, entity.StreetAddress);
+        return new ProfileResource(
+            entity.Id,
+            entity.UserId,
+            entity.FullName,
+            entity.EmailAddress,
+            entity.StreetAddress,
+            new ProfilePreferencesResource(
+                entity.Preferences.Language,
+                entity.Preferences.Theme,
+                entity.Preferences.NotificationsEnabled));
     }
 }

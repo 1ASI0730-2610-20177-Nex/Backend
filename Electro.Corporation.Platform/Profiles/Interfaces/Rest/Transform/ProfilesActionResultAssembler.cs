@@ -33,6 +33,14 @@ public static class ProfilesActionResultAssembler
 
     // --- Specific Assembler Methods ---
 
+    public static IActionResult ToActionResultFromProfileResult(
+        ControllerBase controller,
+        Result<Profile> result,
+        IStringLocalizer<ErrorMessages> errorLocalizer,
+        ProblemDetailsFactory problemDetailsFactory,
+        Func<Profile, IActionResult> successAction)
+        => ToActionResultFromCreateProfileResult(controller, result, errorLocalizer, problemDetailsFactory, successAction);
+
     public static IActionResult ToActionResultFromCreateProfileResult(
         ControllerBase controller,
         Result<Profile> result,

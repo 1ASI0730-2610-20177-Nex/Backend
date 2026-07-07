@@ -2,14 +2,7 @@
 
 namespace Electro.Corporation.Platform.Iam.Domain.Model.Aggregates;
 
-/**
- * <summary>
- *     The user aggregate
- * </summary>
- * <remarks>
- *     This class is used to represent a user
- * </remarks>
- */
+
 public partial class User(string username, string passwordHash)
 {
     public User() : this(string.Empty, string.Empty)

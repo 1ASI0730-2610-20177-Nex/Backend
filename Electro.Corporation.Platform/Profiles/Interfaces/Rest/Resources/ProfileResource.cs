@@ -15,4 +15,10 @@
 /// <param name="StreetAddress">
 ///     The street address of the profile
 /// </param>
-public record ProfileResource(int Id, int UserId, string FullName, string Email, string StreetAddress);
+public record ProfileResource(
+    int Id,
+    int UserId,
+    string FullName,
+    string Email,
+    string StreetAddress,
+    ProfilePreferencesResource Preferences);

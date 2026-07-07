@@ -38,6 +38,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Devices\Resources\DevicesMessages.resx
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Iam/Domain/Model/Errors/Resources/IamErrors.resx]
+build_metadata.AdditionalFiles.TargetPath = Iam\Domain\Model\Errors\Resources\IamErrors.resx
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Iam/Resources/IamMessages.resx]
+build_metadata.AdditionalFiles.TargetPath = Iam\Resources\IamMessages.resx
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Profiles/Resources/ProfilesMessages.resx]
+build_metadata.AdditionalFiles.TargetPath = Profiles\Resources\ProfilesMessages.resx
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Shared/Resources/CommonMessages.resx]
 build_metadata.AdditionalFiles.TargetPath = Shared\Resources\CommonMessages.resx
 build_metadata.AdditionalFiles.CssScope = 
@@ -52,6 +64,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Devices/Resources/DevicesMessages.es.resx]
 build_metadata.AdditionalFiles.TargetPath = Devices\Resources\DevicesMessages.es.resx
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Iam/Domain/Model/Errors/Resources/IamErrors.es.resx]
+build_metadata.AdditionalFiles.TargetPath = Iam\Domain\Model\Errors\Resources\IamErrors.es.resx
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Iam/Resources/IamMessages.es.resx]
+build_metadata.AdditionalFiles.TargetPath = Iam\Resources\IamMessages.es.resx
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Profiles/Resources/ProfilesMessages.es.resx]
+build_metadata.AdditionalFiles.TargetPath = Profiles\Resources\ProfilesMessages.es.resx
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Shared/Resources/Errors/ErrorMessages.es.resx]

@@ -1,23 +1,13 @@
 ﻿using Electro.Corporation.Platform.Profiles.Domain.Model.Aggregates;
 using Electro.Corporation.Platform.Profiles.Domain.Model.Commands;
+using Electro.Corporation.Platform.Profiles.Domain.Model.Queries;
 using Electro.Corporation.Platform.Shared.Application.Model;
 
 namespace Electro.Corporation.Platform.Profiles.Application.CommandServices;
 
-/// <summary>
-///     Profile command service interface
-/// </summary>
 public interface IProfileCommandService
 {
-    /// <summary>
-    ///     Handle create profile command
-    /// </summary>
-    /// <param name="command">
-    ///     The <see cref="CreateProfileCommand" /> command
-    /// </param>
-    /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns>
-    ///     The <see cref="Profile" /> object with the created profile
-    /// </returns>
     Task<Result<Profile>> Handle(CreateProfileCommand command, CancellationToken cancellationToken);
+    Task<Result<Profile>> Handle(UpdateProfileCommand command, CancellationToken cancellationToken);
+    Task<Result<Profile>> Handle(UpdateProfilePreferencesCommand command, CancellationToken cancellationToken);
 }
