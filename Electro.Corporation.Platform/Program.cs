@@ -26,6 +26,13 @@ using Electro.Corporation.Platform.Iam.Infrastructure.Tokens.Jwt.Configuration;
 using Electro.Corporation.Platform.Iam.Infrastructure.Tokens.Jwt.Services;
 using Electro.Corporation.Platform.Iam.Interfaces.Acl;
 using Electro.Corporation.Platform.Iam.Resources;
+using Electro.Corporation.Platform.Payment.Application.CommandServices;
+using Electro.Corporation.Platform.Payment.Application.Internal.CommandServices;
+using Electro.Corporation.Platform.Payment.Application.Internal.QueryServices;
+using Electro.Corporation.Platform.Payment.Application.QueryServices;
+using Electro.Corporation.Platform.Payment.Domain.Repositories;
+using Electro.Corporation.Platform.Payment.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
+using Electro.Corporation.Platform.Payment.Resources;
 using Electro.Corporation.Platform.Profiles.Application.Acl;
 using Electro.Corporation.Platform.Profiles.Application.CommandServices;
 using Electro.Corporation.Platform.Profiles.Application.Internal.CommandServices;
@@ -49,7 +56,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.OpenApi;
 using ProblemDetailsFactory = Electro.Corporation.Platform.Shared.Interfaces.Rest.ProblemDetails.ProblemDetailsFactory;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -93,6 +99,7 @@ builder.Services.AddSingleton<IStringLocalizer<IamMessages>, StringLocalizer<Iam
 builder.Services.AddSingleton<IStringLocalizer<ProfilesMessages>, StringLocalizer<ProfilesMessages>>();
 builder.Services.AddSingleton<IStringLocalizer<DevicesMessages>, StringLocalizer<DevicesMessages>>();
 builder.Services.AddSingleton<IStringLocalizer<AnalyticsMessages>, StringLocalizer<AnalyticsMessages>>();
+builder.Services.AddSingleton<IStringLocalizer<PaymentMessages>, StringLocalizer<PaymentMessages>>();
 
 builder.Services.AddSingleton<ProblemDetailsFactory>();
 
@@ -123,7 +130,7 @@ builder.Services.AddSwaggerGen(options =>
     options.EnableAnnotations();
 });
 
-// Shared Bounded Context
+// Shared
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 // IAM Bounded Context
@@ -138,18 +145,37 @@ builder.Services.AddScoped<IProfileCommandService, ProfileCommandService>();
 builder.Services.AddScoped<IProfileQueryService, ProfileQueryService>();
 builder.Services.AddScoped<IProfilesContextFacade, ProfilesContextFacade>();
 
-// Devices Bounded Context
-builder.Services.AddScoped<IHomeRepository, HomeRepository>();
+// Devices Bounded Context (properties, spaces, devices, simulation)
+builder.Services.AddScoped<IPropertyRepository, PropertyRepository>();
+builder.Services.AddScoped<ISpaceRepository, SpaceRepository>();
 builder.Services.AddScoped<IDeviceRepository, DeviceRepository>();
-builder.Services.AddScoped<IHomeCommandService, HomeCommandService>();
-builder.Services.AddScoped<IHomeQueryService, HomeQueryService>();
+builder.Services.AddScoped<ISimulationSessionRepository, SimulationSessionRepository>();
+builder.Services.AddScoped<ISimulationActionRepository, SimulationActionRepository>();
+builder.Services.AddScoped<IPropertyCommandService, PropertyCommandService>();
+builder.Services.AddScoped<IPropertyQueryService, PropertyQueryService>();
+builder.Services.AddScoped<ISpaceCommandService, SpaceCommandService>();
 builder.Services.AddScoped<IDeviceCommandService, DeviceCommandService>();
 builder.Services.AddScoped<IDeviceQueryService, DeviceQueryService>();
+builder.Services.AddScoped<ISimulationSessionCommandService, SimulationSessionCommandService>();
+builder.Services.AddScoped<ISimulationSessionQueryService, SimulationSessionQueryService>();
 
 // Analytics Bounded Context
 builder.Services.AddScoped<IConsumptionRepository, ConsumptionRepository>();
 builder.Services.AddScoped<IConsumptionCommandService, ConsumptionCommandService>();
 builder.Services.AddScoped<IConsumptionQueryService, ConsumptionQueryService>();
+builder.Services.AddScoped<IAlertRepository, AlertRepository>();
+builder.Services.AddScoped<IReportRepository, ReportRepository>();
+builder.Services.AddScoped<IAlertCommandService, AlertCommandService>();
+builder.Services.AddScoped<IAlertQueryService, AlertQueryService>();
+builder.Services.AddScoped<IReportCommandService, ReportCommandService>();
+builder.Services.AddScoped<IReportQueryService, ReportQueryService>();
+builder.Services.AddScoped<IMetricsQueryService, MetricsQueryService>();
+
+// Payment Bounded Context
+builder.Services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
+builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+builder.Services.AddScoped<ISubscriptionCommandService, SubscriptionCommandService>();
+builder.Services.AddScoped<ISubscriptionQueryService, SubscriptionQueryService>();
 
 builder.Services.AddScoped(typeof(ICommandPipelineBehavior<>), typeof(LoggingCommandBehavior<>));
 builder.Services.AddCortexMediator([typeof(Program)]);

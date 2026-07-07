@@ -13,106 +13,106 @@ namespace Electro.Corporation.Platform.Devices.Application.Internal.CommandServi
 
 public class DeviceCommandService(
     IDeviceRepository deviceRepository,
-    IHomeRepository homeRepository,
+    ISpaceRepository spaceRepository,
     IUnitOfWork unitOfWork,
     IStringLocalizer<ErrorMessages> localizer) : IDeviceCommandService
 {
-  private readonly IStringLocalizer<ErrorMessages> _localizer = localizer;
+    private readonly IStringLocalizer<ErrorMessages> _localizer = localizer;
 
-  public async Task<Result<Device>> Handle(CreateDeviceCommand command, CancellationToken cancellationToken)
-  {
-    var home = await homeRepository.FindByIdAsync(command.HomeId, cancellationToken);
-    if (home is null)
-      return Result<Device>.Failure(DevicesError.HomeNotFound,
-        _localizer[nameof(DevicesError.HomeNotFound)]);
+    public async Task<Result<Device>> Handle(CreateDeviceCommand command, CancellationToken cancellationToken)
+    {
+        var space = await spaceRepository.FindByIdAsync(command.SpaceId, cancellationToken);
+        if (space is null)
+            return Result<Device>.Failure(DevicesError.SpaceNotFound,
+                _localizer[nameof(DevicesError.SpaceNotFound)]);
 
-    var device = new Device(command);
-    try
-    {
-      await deviceRepository.AddAsync(device, cancellationToken);
-      await unitOfWork.CompleteAsync(cancellationToken);
-      return Result<Device>.Success(device);
+        var device = new Device(command);
+        try
+        {
+            await deviceRepository.AddAsync(device, cancellationToken);
+            await unitOfWork.CompleteAsync(cancellationToken);
+            return Result<Device>.Success(device);
+        }
+        catch (OperationCanceledException)
+        {
+            return Result<Device>.Failure(DevicesError.OperationCancelled,
+                _localizer[nameof(DevicesError.OperationCancelled)]);
+        }
+        catch (DbUpdateException)
+        {
+            return Result<Device>.Failure(DevicesError.DatabaseError,
+                _localizer[nameof(DevicesError.DatabaseError)]);
+        }
+        catch (Exception)
+        {
+            return Result<Device>.Failure(DevicesError.InternalServerError,
+                _localizer[nameof(DevicesError.InternalServerError)]);
+        }
     }
-    catch (OperationCanceledException)
-    {
-      return Result<Device>.Failure(DevicesError.OperationCancelled,
-        _localizer[nameof(DevicesError.OperationCancelled)]);
-    }
-    catch (DbUpdateException)
-    {
-      return Result<Device>.Failure(DevicesError.DatabaseError,
-        _localizer[nameof(DevicesError.DatabaseError)]);
-    }
-    catch (Exception)
-    {
-      return Result<Device>.Failure(DevicesError.InternalServerError,
-        _localizer[nameof(DevicesError.InternalServerError)]);
-    }
-  }
 
-  public async Task<Result<Device>> Handle(UpdateDeviceCommand command, CancellationToken cancellationToken)
-  {
-    var device = await deviceRepository.FindByIdAsync(command.Id, cancellationToken);
-    if (device is null)
-      return Result<Device>.Failure(DevicesError.DeviceNotFound,
-        _localizer[nameof(DevicesError.DeviceNotFound)]);
+    public async Task<Result<Device>> Handle(UpdateDeviceCommand command, CancellationToken cancellationToken)
+    {
+        var device = await deviceRepository.FindByIdAsync(command.Id, cancellationToken);
+        if (device is null)
+            return Result<Device>.Failure(DevicesError.DeviceNotFound,
+                _localizer[nameof(DevicesError.DeviceNotFound)]);
 
-    var home = await homeRepository.FindByIdAsync(command.HomeId, cancellationToken);
-    if (home is null)
-      return Result<Device>.Failure(DevicesError.HomeNotFound,
-        _localizer[nameof(DevicesError.HomeNotFound)]);
+        var space = await spaceRepository.FindByIdAsync(command.SpaceId, cancellationToken);
+        if (space is null)
+            return Result<Device>.Failure(DevicesError.SpaceNotFound,
+                _localizer[nameof(DevicesError.SpaceNotFound)]);
 
-    device.Update(command);
-    try
-    {
-      deviceRepository.Update(device);
-      await unitOfWork.CompleteAsync(cancellationToken);
-      return Result<Device>.Success(device);
+        device.Update(command);
+        try
+        {
+            deviceRepository.Update(device);
+            await unitOfWork.CompleteAsync(cancellationToken);
+            return Result<Device>.Success(device);
+        }
+        catch (OperationCanceledException)
+        {
+            return Result<Device>.Failure(DevicesError.OperationCancelled,
+                _localizer[nameof(DevicesError.OperationCancelled)]);
+        }
+        catch (DbUpdateException)
+        {
+            return Result<Device>.Failure(DevicesError.DatabaseError,
+                _localizer[nameof(DevicesError.DatabaseError)]);
+        }
+        catch (Exception)
+        {
+            return Result<Device>.Failure(DevicesError.InternalServerError,
+                _localizer[nameof(DevicesError.InternalServerError)]);
+        }
     }
-    catch (OperationCanceledException)
-    {
-      return Result<Device>.Failure(DevicesError.OperationCancelled,
-        _localizer[nameof(DevicesError.OperationCancelled)]);
-    }
-    catch (DbUpdateException)
-    {
-      return Result<Device>.Failure(DevicesError.DatabaseError,
-        _localizer[nameof(DevicesError.DatabaseError)]);
-    }
-    catch (Exception)
-    {
-      return Result<Device>.Failure(DevicesError.InternalServerError,
-        _localizer[nameof(DevicesError.InternalServerError)]);
-    }
-  }
 
-  public async Task<Result> Handle(DeleteDeviceCommand command, CancellationToken cancellationToken)
-  {
-    var device = await deviceRepository.FindByIdAsync(command.Id, cancellationToken);
-    if (device is null)
-      return Result.Failure(DevicesError.DeviceNotFound,
-        _localizer[nameof(DevicesError.DeviceNotFound)]);
+    public async Task<Result> Handle(DeleteDeviceCommand command, CancellationToken cancellationToken)
+    {
+        var device = await deviceRepository.FindByIdAsync(command.Id, cancellationToken);
+        if (device is null)
+            return Result.Failure(DevicesError.DeviceNotFound,
+                _localizer[nameof(DevicesError.DeviceNotFound)]);
 
-    try
-    {
-      deviceRepository.Remove(device);
-      await unitOfWork.CompleteAsync(cancellationToken);
-      return Result.Success();
+        try
+        {
+            deviceRepository.Remove(device);
+            await unitOfWork.CompleteAsync(cancellationToken);
+            return Result.Success();
+        }
+        catch (OperationCanceledException)
+        {
+            return Result.Failure(DevicesError.OperationCancelled,
+                _localizer[nameof(DevicesError.OperationCancelled)]);
+        }
+        catch (DbUpdateException)
+        {
+            return Result.Failure(DevicesError.DatabaseError,
+                _localizer[nameof(DevicesError.DatabaseError)]);
+        }
+        catch (Exception)
+        {
+            return Result.Failure(DevicesError.InternalServerError,
+                _localizer[nameof(DevicesError.InternalServerError)]);
+        }
     }
-    catch (OperationCanceledException)
-    {
-      return Result.Failure(DevicesError.OperationCancelled,
-        _localizer[nameof(DevicesError.OperationCancelled)]);
-    }
-    catch (DbUpdateException)
-    {
-      return Result.Failure(DevicesError.DatabaseError,
-        _localizer[nameof(DevicesError.DatabaseError)]);
-    }
-    catch (Exception)
-    {
-      return Result.Failure(DevicesError.InternalServerError,
-        _localizer[nameof(DevicesError.InternalServerError)]);
-    }
-  }
 }

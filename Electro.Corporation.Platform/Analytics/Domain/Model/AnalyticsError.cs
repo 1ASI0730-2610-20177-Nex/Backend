@@ -4,6 +4,9 @@ public enum AnalyticsError
 {
     None,
     ConsumptionNotFound,
+    AlertNotFound,
+    ReportNotFound,
+    PropertyNotFound,
     OperationCancelled,
     DatabaseError,
     InternalServerError

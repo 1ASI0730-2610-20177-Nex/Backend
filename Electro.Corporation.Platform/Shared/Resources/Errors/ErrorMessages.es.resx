@@ -6,49 +6,76 @@
     <data name="OperationCancelled" xml:space="preserve">
     <value>La operación fue cancelada.</value>
   </data>
+    <data name="DatabaseError" xml:space="preserve">
+    <value>Ocurrió un error de base de datos.</value>
+  </data>
+    <data name="InternalServerError" xml:space="preserve">
+    <value>Ocurrió un error interno inesperado.</value>
+  </data>
 
-    <data name="ProfileError.UserNotFound" xml:space="preserve">
+    <data name="ProfileNotFound" xml:space="preserve">
+    <value>Perfil no encontrado.</value>
+  </data>
+    <data name="UserNotFound" xml:space="preserve">
     <value>Usuario no encontrado.</value>
   </data>
-    <data name="ProfileError.EmailAlreadyRegistered" xml:space="preserve">
+    <data name="EmailAlreadyRegistered" xml:space="preserve">
     <value>La dirección de correo electrónico {0} ya está registrada.</value>
   </data>
-    <data name="ProfileError.OperationCancelled" xml:space="preserve">
-    <value>La operación de perfil fue cancelada.</value>
-  </data>
-    <data name="ProfileError.DatabaseError" xml:space="preserve">
-    <value>Ocurrió un error de base de datos durante la operación de perfil.</value>
-  </data>
-    <data name="ProfileError.InternalServerError" xml:space="preserve">
-    <value>Ocurrió un error interno inesperado en Profile.</value>
+    <data name="InvalidProfileData" xml:space="preserve">
+    <value>Datos de perfil inválidos.</value>
   </data>
 
-    <data name="DevicesError.HomeNotFound" xml:space="preserve">
-    <value>Hogar no encontrado.</value>
+    <data name="InvalidCredentials" xml:space="preserve">
+    <value>Usuario o contraseña inválidos.</value>
   </data>
-    <data name="DevicesError.DeviceNotFound" xml:space="preserve">
+    <data name="UsernameAlreadyTaken" xml:space="preserve">
+    <value>El nombre de usuario {0} ya está en uso.</value>
+  </data>
+
+    <data name="PropertyNotFound" xml:space="preserve">
+    <value>Propiedad no encontrada.</value>
+  </data>
+    <data name="SpaceNotFound" xml:space="preserve">
+    <value>Espacio no encontrado.</value>
+  </data>
+    <data name="DeviceNotFound" xml:space="preserve">
     <value>Dispositivo no encontrado.</value>
   </data>
-    <data name="DevicesError.OperationCancelled" xml:space="preserve">
-    <value>La operación de dispositivos fue cancelada.</value>
-  </data>
-    <data name="DevicesError.DatabaseError" xml:space="preserve">
-    <value>Ocurrió un error de base de datos durante la operación de dispositivos.</value>
-  </data>
-    <data name="DevicesError.InternalServerError" xml:space="preserve">
-    <value>Ocurrió un error interno inesperado en Devices.</value>
-  </data>
 
-    <data name="AnalyticsError.ConsumptionNotFound" xml:space="preserve">
+    <data name="ConsumptionNotFound" xml:space="preserve">
     <value>Consumo no encontrado.</value>
   </data>
-    <data name="AnalyticsError.OperationCancelled" xml:space="preserve">
-    <value>La operación de analítica fue cancelada.</value>
+    <data name="AlertNotFound" xml:space="preserve">
+    <value>Alerta no encontrada.</value>
   </data>
-    <data name="AnalyticsError.DatabaseError" xml:space="preserve">
-    <value>Ocurrió un error de base de datos durante la operación de analítica.</value>
+    <data name="ReportNotFound" xml:space="preserve">
+    <value>Reporte no encontrado.</value>
   </data>
-    <data name="AnalyticsError.InternalServerError" xml:space="preserve">
-    <value>Ocurrió un error interno inesperado en Analytics.</value>
+
+    <data name="SessionNotFound" xml:space="preserve">
+    <value>Sesión de simulación no encontrada.</value>
+  </data>
+    <data name="ActiveSessionNotFound" xml:space="preserve">
+    <value>No se encontró una sesión de simulación activa para este usuario.</value>
+  </data>
+    <data name="SessionAlreadyEnded" xml:space="preserve">
+    <value>La sesión de simulación ya ha finalizado.</value>
+  </data>
+    <data name="ActiveSessionAlreadyExists" xml:space="preserve">
+    <value>El usuario ya tiene una sesión de simulación activa.</value>
+  </data>
+
+    <data name="SubscriptionNotFound" xml:space="preserve">
+    <value>Suscripción no encontrada.</value>
+  </data>
+    <data name="ActiveSubscriptionAlreadyExists" xml:space="preserve">
+    <value>El usuario ya tiene una suscripción activa.</value>
+  </data>
+    <data name="SubscriptionAlreadyCancelled" xml:space="preserve">
+    <value>La suscripción ya está cancelada.</value>
+  </data>
+    <data name="InvalidPlan" xml:space="preserve">
+    <value>Plan de suscripción inválido.</value>
   </data>
 </root>

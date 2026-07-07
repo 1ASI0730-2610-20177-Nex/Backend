@@ -1,4 +1,9 @@
 
+using Electro.Corporation.Platform.Analytics.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions;
+using Electro.Corporation.Platform.Devices.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions;
+using Electro.Corporation.Platform.Iam.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions;
+using Electro.Corporation.Platform.Payment.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions;
+using Electro.Corporation.Platform.Profiles.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions;
 using Electro.Corporation.Platform.Shared.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions;
 using Electro.Corporation.Platform.Shared.Infrastructure.Persistence.EntityFrameworkCore.Interceptors;
 using Microsoft.EntityFrameworkCore;
@@ -18,5 +23,10 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         base.OnModelCreating(builder);
 
         builder.UseSnakeCaseNamingConvention();
+        builder.ApplyIamConfiguration();
+        builder.ApplyProfilesConfiguration();
+        builder.ApplyDevicesConfiguration();
+        builder.ApplyAnalyticsConfiguration();
+        builder.ApplyPaymentConfiguration();
     }
 }

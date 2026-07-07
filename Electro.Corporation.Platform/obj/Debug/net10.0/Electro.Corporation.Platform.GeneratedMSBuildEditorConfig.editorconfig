@@ -19,65 +19,73 @@ build_property.TargetFrameworkIdentifier = .NETCoreApp
 build_property.TargetFrameworkVersion = v10.0
 build_property.RootNamespace = Electro.Corporation.Platform
 build_property.RootNamespace = Electro.Corporation.Platform
-build_property.ProjectDir = C:\Users\gelat\OneDrive\Documentos\UPC\nex\electro-corporation-platform\Electro.Corporation.Platform\
+build_property.ProjectDir = C:\Users\gelat\OneDrive\Documentos\UPC\ELECTRO\Electro.Corporation.Platform\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\gelat\OneDrive\Documentos\UPC\nex\electro-corporation-platform\Electro.Corporation.Platform
+build_property.MSBuildProjectDirectory = C:\Users\gelat\OneDrive\Documentos\UPC\ELECTRO\Electro.Corporation.Platform
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Analytics/Resources/AnalyticsMessages.resx]
+[C:/Users/gelat/OneDrive/Documentos/UPC/ELECTRO/Electro.Corporation.Platform/Analytics/Resources/AnalyticsMessages.resx]
 build_metadata.AdditionalFiles.TargetPath = Analytics\Resources\AnalyticsMessages.resx
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Devices/Resources/DevicesMessages.resx]
+[C:/Users/gelat/OneDrive/Documentos/UPC/ELECTRO/Electro.Corporation.Platform/Devices/Resources/DevicesMessages.resx]
 build_metadata.AdditionalFiles.TargetPath = Devices\Resources\DevicesMessages.resx
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Iam/Domain/Model/Errors/Resources/IamErrors.resx]
+[C:/Users/gelat/OneDrive/Documentos/UPC/ELECTRO/Electro.Corporation.Platform/Iam/Domain/Model/Errors/Resources/IamErrors.resx]
 build_metadata.AdditionalFiles.TargetPath = Iam\Domain\Model\Errors\Resources\IamErrors.resx
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Iam/Resources/IamMessages.resx]
+[C:/Users/gelat/OneDrive/Documentos/UPC/ELECTRO/Electro.Corporation.Platform/Iam/Resources/IamMessages.resx]
 build_metadata.AdditionalFiles.TargetPath = Iam\Resources\IamMessages.resx
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Profiles/Resources/ProfilesMessages.resx]
+[C:/Users/gelat/OneDrive/Documentos/UPC/ELECTRO/Electro.Corporation.Platform/Payment/Resources/PaymentMessages.resx]
+build_metadata.AdditionalFiles.TargetPath = Payment\Resources\PaymentMessages.resx
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gelat/OneDrive/Documentos/UPC/ELECTRO/Electro.Corporation.Platform/Profiles/Resources/ProfilesMessages.resx]
 build_metadata.AdditionalFiles.TargetPath = Profiles\Resources\ProfilesMessages.resx
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Shared/Resources/CommonMessages.resx]
+[C:/Users/gelat/OneDrive/Documentos/UPC/ELECTRO/Electro.Corporation.Platform/Shared/Resources/CommonMessages.resx]
 build_metadata.AdditionalFiles.TargetPath = Shared\Resources\CommonMessages.resx
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Shared/Resources/Errors/ErrorMessages.resx]
+[C:/Users/gelat/OneDrive/Documentos/UPC/ELECTRO/Electro.Corporation.Platform/Shared/Resources/Errors/ErrorMessages.resx]
 build_metadata.AdditionalFiles.TargetPath = Shared\Resources\Errors\ErrorMessages.resx
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Analytics/Resources/AnalyticsMessages.es.resx]
+[C:/Users/gelat/OneDrive/Documentos/UPC/ELECTRO/Electro.Corporation.Platform/Analytics/Resources/AnalyticsMessages.es.resx]
 build_metadata.AdditionalFiles.TargetPath = Analytics\Resources\AnalyticsMessages.es.resx
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Devices/Resources/DevicesMessages.es.resx]
+[C:/Users/gelat/OneDrive/Documentos/UPC/ELECTRO/Electro.Corporation.Platform/Devices/Resources/DevicesMessages.es.resx]
 build_metadata.AdditionalFiles.TargetPath = Devices\Resources\DevicesMessages.es.resx
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Iam/Domain/Model/Errors/Resources/IamErrors.es.resx]
+[C:/Users/gelat/OneDrive/Documentos/UPC/ELECTRO/Electro.Corporation.Platform/Iam/Domain/Model/Errors/Resources/IamErrors.es.resx]
 build_metadata.AdditionalFiles.TargetPath = Iam\Domain\Model\Errors\Resources\IamErrors.es.resx
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Iam/Resources/IamMessages.es.resx]
+[C:/Users/gelat/OneDrive/Documentos/UPC/ELECTRO/Electro.Corporation.Platform/Iam/Resources/IamMessages.es.resx]
 build_metadata.AdditionalFiles.TargetPath = Iam\Resources\IamMessages.es.resx
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Profiles/Resources/ProfilesMessages.es.resx]
+[C:/Users/gelat/OneDrive/Documentos/UPC/ELECTRO/Electro.Corporation.Platform/Payment/Resources/PaymentMessages.es.resx]
+build_metadata.AdditionalFiles.TargetPath = Payment\Resources\PaymentMessages.es.resx
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gelat/OneDrive/Documentos/UPC/ELECTRO/Electro.Corporation.Platform/Profiles/Resources/ProfilesMessages.es.resx]
 build_metadata.AdditionalFiles.TargetPath = Profiles\Resources\ProfilesMessages.es.resx
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gelat/OneDrive/Documentos/UPC/nex/electro-corporation-platform/Electro.Corporation.Platform/Shared/Resources/Errors/ErrorMessages.es.resx]
+[C:/Users/gelat/OneDrive/Documentos/UPC/ELECTRO/Electro.Corporation.Platform/Shared/Resources/Errors/ErrorMessages.es.resx]
 build_metadata.AdditionalFiles.TargetPath = Shared\Resources\Errors\ErrorMessages.es.resx
 build_metadata.AdditionalFiles.CssScope = 

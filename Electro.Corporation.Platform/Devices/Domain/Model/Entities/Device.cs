@@ -17,7 +17,7 @@ public class Device
         Type = command.Type;
         PowerWatts = command.PowerWatts;
         Status = command.Status;
-        HomeId = command.HomeId;
+        SpaceId = command.SpaceId;
     }
 
     public int Id { get; set; }
@@ -25,7 +25,7 @@ public class Device
     public string Type { get; set; }
     public int PowerWatts { get; set; }
     public string Status { get; set; }
-    public int HomeId { get; set; }
+    public int SpaceId { get; set; }
 
     public void Update(UpdateDeviceCommand command)
     {
@@ -33,6 +33,6 @@ public class Device
         Type = command.Type;
         PowerWatts = command.PowerWatts;
         Status = command.Status;
-        HomeId = command.HomeId;
+        SpaceId = command.SpaceId;
     }
 }

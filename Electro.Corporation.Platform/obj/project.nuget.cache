@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qw020/jkesI=",
+  "dgSpecHash": "Y7QzFWNUq2Q=",
   "success": true,
-  "projectFilePath": "C:\\Users\\gelat\\OneDrive\\Documentos\\UPC\\nex\\electro-corporation-platform\\Electro.Corporation.Platform\\Electro.Corporation.Platform.csproj",
+  "projectFilePath": "C:\\Users\\gelat\\OneDrive\\Documentos\\UPC\\ELECTRO\\Electro.Corporation.Platform\\Electro.Corporation.Platform.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gelat\\.nuget\\packages\\bcrypt.net-next\\4.2.0\\bcrypt.net-next.4.2.0.nupkg.sha512",
     "C:\\Users\\gelat\\.nuget\\packages\\bouncycastle.cryptography\\2.6.2\\bouncycastle.cryptography.2.6.2.nupkg.sha512",
@@ -119,9 +119,9 @@
       "code": "NU1903",
       "level": "Warning",
       "message": "Package 'Microsoft.OpenApi' 2.4.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
-      "projectPath": "C:\\Users\\gelat\\OneDrive\\Documentos\\UPC\\nex\\electro-corporation-platform\\Electro.Corporation.Platform\\Electro.Corporation.Platform.csproj",
+      "projectPath": "C:\\Users\\gelat\\OneDrive\\Documentos\\UPC\\ELECTRO\\Electro.Corporation.Platform\\Electro.Corporation.Platform.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\gelat\\OneDrive\\Documentos\\UPC\\nex\\electro-corporation-platform\\Electro.Corporation.Platform\\Electro.Corporation.Platform.csproj",
+      "filePath": "C:\\Users\\gelat\\OneDrive\\Documentos\\UPC\\ELECTRO\\Electro.Corporation.Platform\\Electro.Corporation.Platform.csproj",
       "libraryId": "Microsoft.OpenApi",
       "targetGraphs": [
         "net10.0"

@@ -6,49 +6,76 @@
     <data name="OperationCancelled" xml:space="preserve">
     <value>The operation was cancelled.</value>
   </data>
+    <data name="DatabaseError" xml:space="preserve">
+    <value>A database error occurred.</value>
+  </data>
+    <data name="InternalServerError" xml:space="preserve">
+    <value>An unexpected internal error occurred.</value>
+  </data>
 
-    <data name="ProfileError.UserNotFound" xml:space="preserve">
+    <data name="ProfileNotFound" xml:space="preserve">
+    <value>Profile not found.</value>
+  </data>
+    <data name="UserNotFound" xml:space="preserve">
     <value>User not found.</value>
   </data>
-    <data name="ProfileError.EmailAlreadyRegistered" xml:space="preserve">
+    <data name="EmailAlreadyRegistered" xml:space="preserve">
     <value>Email address {0} is already registered.</value>
   </data>
-    <data name="ProfileError.OperationCancelled" xml:space="preserve">
-    <value>Profile operation was cancelled.</value>
-  </data>
-    <data name="ProfileError.DatabaseError" xml:space="preserve">
-    <value>A database error occurred during profile operation.</value>
-  </data>
-    <data name="ProfileError.InternalServerError" xml:space="preserve">
-    <value>An unexpected internal error occurred in Profile.</value>
+    <data name="InvalidProfileData" xml:space="preserve">
+    <value>Invalid profile data.</value>
   </data>
 
-    <data name="DevicesError.HomeNotFound" xml:space="preserve">
-    <value>Home not found.</value>
+    <data name="InvalidCredentials" xml:space="preserve">
+    <value>Invalid username or password.</value>
   </data>
-    <data name="DevicesError.DeviceNotFound" xml:space="preserve">
+    <data name="UsernameAlreadyTaken" xml:space="preserve">
+    <value>Username {0} is already taken.</value>
+  </data>
+
+    <data name="PropertyNotFound" xml:space="preserve">
+    <value>Property not found.</value>
+  </data>
+    <data name="SpaceNotFound" xml:space="preserve">
+    <value>Space not found.</value>
+  </data>
+    <data name="DeviceNotFound" xml:space="preserve">
     <value>Device not found.</value>
   </data>
-    <data name="DevicesError.OperationCancelled" xml:space="preserve">
-    <value>Devices operation was cancelled.</value>
-  </data>
-    <data name="DevicesError.DatabaseError" xml:space="preserve">
-    <value>A database error occurred during devices operation.</value>
-  </data>
-    <data name="DevicesError.InternalServerError" xml:space="preserve">
-    <value>An unexpected internal error occurred in Devices.</value>
-  </data>
 
-    <data name="AnalyticsError.ConsumptionNotFound" xml:space="preserve">
+    <data name="ConsumptionNotFound" xml:space="preserve">
     <value>Consumption not found.</value>
   </data>
-    <data name="AnalyticsError.OperationCancelled" xml:space="preserve">
-    <value>Analytics operation was cancelled.</value>
+    <data name="AlertNotFound" xml:space="preserve">
+    <value>Alert not found.</value>
   </data>
-    <data name="AnalyticsError.DatabaseError" xml:space="preserve">
-    <value>A database error occurred during analytics operation.</value>
+    <data name="ReportNotFound" xml:space="preserve">
+    <value>Report not found.</value>
   </data>
-    <data name="AnalyticsError.InternalServerError" xml:space="preserve">
-    <value>An unexpected internal error occurred in Analytics.</value>
+
+    <data name="SessionNotFound" xml:space="preserve">
+    <value>Simulation session not found.</value>
+  </data>
+    <data name="ActiveSessionNotFound" xml:space="preserve">
+    <value>No active simulation session found for this user.</value>
+  </data>
+    <data name="SessionAlreadyEnded" xml:space="preserve">
+    <value>The simulation session has already ended.</value>
+  </data>
+    <data name="ActiveSessionAlreadyExists" xml:space="preserve">
+    <value>The user already has an active simulation session.</value>
+  </data>
+
+    <data name="SubscriptionNotFound" xml:space="preserve">
+    <value>Subscription not found.</value>
+  </data>
+    <data name="ActiveSubscriptionAlreadyExists" xml:space="preserve">
+    <value>User already has an active subscription.</value>
+  </data>
+    <data name="SubscriptionAlreadyCancelled" xml:space="preserve">
+    <value>Subscription is already cancelled.</value>
+  </data>
+    <data name="InvalidPlan" xml:space="preserve">
+    <value>Invalid subscription plan.</value>
   </data>
 </root>

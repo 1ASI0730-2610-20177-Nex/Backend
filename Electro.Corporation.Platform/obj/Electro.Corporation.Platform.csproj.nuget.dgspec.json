@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gelat\\OneDrive\\Documentos\\UPC\\nex\\electro-corporation-platform\\Electro.Corporation.Platform\\Electro.Corporation.Platform.csproj": {}
+    "C:\\Users\\gelat\\OneDrive\\Documentos\\UPC\\ELECTRO\\Electro.Corporation.Platform\\Electro.Corporation.Platform.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gelat\\OneDrive\\Documentos\\UPC\\nex\\electro-corporation-platform\\Electro.Corporation.Platform\\Electro.Corporation.Platform.csproj": {
+    "C:\\Users\\gelat\\OneDrive\\Documentos\\UPC\\ELECTRO\\Electro.Corporation.Platform\\Electro.Corporation.Platform.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gelat\\OneDrive\\Documentos\\UPC\\nex\\electro-corporation-platform\\Electro.Corporation.Platform\\Electro.Corporation.Platform.csproj",
+        "projectUniqueName": "C:\\Users\\gelat\\OneDrive\\Documentos\\UPC\\ELECTRO\\Electro.Corporation.Platform\\Electro.Corporation.Platform.csproj",
         "projectName": "Electro.Corporation.Platform",
-        "projectPath": "C:\\Users\\gelat\\OneDrive\\Documentos\\UPC\\nex\\electro-corporation-platform\\Electro.Corporation.Platform\\Electro.Corporation.Platform.csproj",
+        "projectPath": "C:\\Users\\gelat\\OneDrive\\Documentos\\UPC\\ELECTRO\\Electro.Corporation.Platform\\Electro.Corporation.Platform.csproj",
         "packagesPath": "C:\\Users\\gelat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gelat\\OneDrive\\Documentos\\UPC\\nex\\electro-corporation-platform\\Electro.Corporation.Platform\\obj\\",
+        "outputPath": "C:\\Users\\gelat\\OneDrive\\Documentos\\UPC\\ELECTRO\\Electro.Corporation.Platform\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

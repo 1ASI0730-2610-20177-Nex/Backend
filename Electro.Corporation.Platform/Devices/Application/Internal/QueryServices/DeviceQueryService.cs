@@ -7,13 +7,16 @@ namespace Electro.Corporation.Platform.Devices.Application.Internal.QueryService
 
 public class DeviceQueryService(IDeviceRepository deviceRepository) : IDeviceQueryService
 {
-  public async Task<Device?> Handle(GetDeviceByIdQuery query, CancellationToken cancellationToken)
-  {
-    return await deviceRepository.FindByIdAsync(query.DeviceId, cancellationToken);
-  }
+    public async Task<Device?> Handle(GetDeviceByIdQuery query, CancellationToken cancellationToken)
+    {
+        return await deviceRepository.FindByIdAsync(query.DeviceId, cancellationToken);
+    }
 
-  public async Task<IEnumerable<Device>> Handle(GetAllDevicesQuery query, CancellationToken cancellationToken)
-  {
-    return await deviceRepository.ListAsync(cancellationToken);
-  }
+    public async Task<IEnumerable<Device>> Handle(GetAllDevicesQuery query, CancellationToken cancellationToken)
+    {
+        if (query.SpaceId.HasValue)
+            return await deviceRepository.FindBySpaceIdAsync(query.SpaceId.Value, cancellationToken);
+
+        return await deviceRepository.ListAsync(cancellationToken);
+    }
 }
