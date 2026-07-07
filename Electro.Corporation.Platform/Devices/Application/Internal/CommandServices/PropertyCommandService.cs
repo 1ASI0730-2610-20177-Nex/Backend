@@ -13,6 +13,7 @@ namespace Electro.Corporation.Platform.Devices.Application.Internal.CommandServi
 
 public class PropertyCommandService(
     IPropertyRepository propertyRepository,
+    ISpaceRepository spaceRepository,
     IUnitOfWork unitOfWork,
     IStringLocalizer<ErrorMessages> localizer) : IPropertyCommandService
 {
@@ -25,6 +26,16 @@ public class PropertyCommandService(
         {
             await propertyRepository.AddAsync(property, cancellationToken);
             await unitOfWork.CompleteAsync(cancellationToken);
+
+            var defaultSpace = new Space
+            {
+                Name = "General",
+                Type = "General",
+                PropertyId = property.Id
+            };
+            await spaceRepository.AddAsync(defaultSpace, cancellationToken);
+            await unitOfWork.CompleteAsync(cancellationToken);
+
             return Result<Property>.Success(property);
         }
         catch (OperationCanceledException)

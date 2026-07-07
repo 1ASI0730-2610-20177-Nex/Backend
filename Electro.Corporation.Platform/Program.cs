@@ -187,6 +187,34 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<AppDbContext>();
     context.Database.Migrate();
+
+    // Ensure all existing properties have at least one default space
+    var propertiesWithoutSpaces = context.Set<Electro.Corporation.Platform.Devices.Domain.Model.Entities.Property>()
+        .GroupJoin(
+            context.Set<Electro.Corporation.Platform.Devices.Domain.Model.Entities.Space>(),
+            p => p.Id,
+            s => s.PropertyId,
+            (p, s) => new { Property = p, Spaces = s }
+        )
+        .Where(x => !x.Spaces.Any())
+        .Select(x => x.Property)
+        .ToList();
+
+    foreach (var property in propertiesWithoutSpaces)
+    {
+        context.Set<Electro.Corporation.Platform.Devices.Domain.Model.Entities.Space>().Add(
+            new Electro.Corporation.Platform.Devices.Domain.Model.Entities.Space
+            {
+                Name = "General",
+                Type = "General",
+                PropertyId = property.Id
+            });
+    }
+
+    if (propertiesWithoutSpaces.Any())
+    {
+        context.SaveChanges();
+    }
 }
 
 app.UseGlobalExceptionHandler();

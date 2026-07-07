@@ -1,7 +1,9 @@
 using System.Net.Mime;
 using Electro.Corporation.Platform.Devices.Application.CommandServices;
 using Electro.Corporation.Platform.Devices.Application.QueryServices;
+using Electro.Corporation.Platform.Devices.Domain.Model;
 using Electro.Corporation.Platform.Devices.Domain.Model.Queries;
+using Electro.Corporation.Platform.Devices.Domain.Repositories;
 using Electro.Corporation.Platform.Devices.Interfaces.Rest.Resources;
 using Electro.Corporation.Platform.Devices.Interfaces.Rest.Transform;
 using Electro.Corporation.Platform.Resources.Errors;
@@ -20,6 +22,7 @@ public class PropertiesController(
     IPropertyCommandService propertyCommandService,
     IPropertyQueryService propertyQueryService,
     ISpaceCommandService spaceCommandService,
+    ISpaceRepository spaceRepository,
     IStringLocalizer<ErrorMessages> errorLocalizer,
     ProblemDetailsFactory problemDetailsFactory) : ControllerBase
 {
@@ -33,7 +36,14 @@ public class PropertiesController(
         CancellationToken cancellationToken)
     {
         var properties = await propertyQueryService.Handle(new GetPropertiesByUserIdQuery(userId), cancellationToken);
-        return Ok(properties.Select(PropertyResourceFromEntityAssembler.ToResourceFromEntity));
+        var resources = new List<PropertyResource>();
+        foreach (var property in properties)
+        {
+            var spaces = await spaceRepository.FindByPropertyIdAsync(property.Id, cancellationToken);
+            var defaultSpaceId = spaces.FirstOrDefault()?.Id ?? 0;
+            resources.Add(PropertyResourceFromEntityAssembler.ToResourceFromEntity(property, defaultSpaceId));
+        }
+        return Ok(resources);
     }
 
     [HttpGet("{propertyId:int}")]
@@ -43,13 +53,14 @@ public class PropertiesController(
     public async Task<IActionResult> GetPropertyById(int propertyId, CancellationToken cancellationToken)
     {
         var property = await propertyQueryService.Handle(new GetPropertyByIdQuery(propertyId), cancellationToken);
-        return DevicesActionResultAssembler.ToActionResultFromGetPropertyByIdResult(
-            this,
-            property,
-            _errorLocalizer,
-            _problemDetailsFactory,
-            foundProperty => Ok(PropertyResourceFromEntityAssembler.ToResourceFromEntity(foundProperty))
-        );
+        if (property == null)
+        {
+            return _problemDetailsFactory.CreateProblemDetails(this, StatusCodes.Status404NotFound,
+                DevicesError.PropertyNotFound, _errorLocalizer[nameof(DevicesError.PropertyNotFound)]);
+        }
+        var spaces = await spaceRepository.FindByPropertyIdAsync(property.Id, cancellationToken);
+        var defaultSpaceId = spaces.FirstOrDefault()?.Id ?? 0;
+        return Ok(PropertyResourceFromEntityAssembler.ToResourceFromEntity(property, defaultSpaceId));
     }
 
     [HttpPost]
@@ -60,14 +71,22 @@ public class PropertiesController(
     {
         var command = CreatePropertyCommandFromResourceAssembler.ToCommandFromResource(resource);
         var result = await propertyCommandService.Handle(command, cancellationToken);
-        return DevicesActionResultAssembler.ToActionResultFromPropertyResult(
-            this,
-            result,
-            _errorLocalizer,
-            _problemDetailsFactory,
-            createdProperty => CreatedAtAction(nameof(GetPropertyById), new { propertyId = createdProperty.Id },
-                PropertyResourceFromEntityAssembler.ToResourceFromEntity(createdProperty))
-        );
+        if (!result.IsSuccess)
+        {
+            int statusCode = result.Error switch
+            {
+                DevicesError.OperationCancelled => StatusCodes.Status409Conflict,
+                DevicesError.DatabaseError => StatusCodes.Status500InternalServerError,
+                DevicesError.InternalServerError => StatusCodes.Status500InternalServerError,
+                _ => StatusCodes.Status400BadRequest
+            };
+            return _problemDetailsFactory.CreateProblemDetails(this, statusCode, result.Error, result.Message);
+        }
+        var createdProperty = result.Value!;
+        var spaces = await spaceRepository.FindByPropertyIdAsync(createdProperty.Id, cancellationToken);
+        var defaultSpaceId = spaces.FirstOrDefault()?.Id ?? 0;
+        return CreatedAtAction(nameof(GetPropertyById), new { propertyId = createdProperty.Id },
+            PropertyResourceFromEntityAssembler.ToResourceFromEntity(createdProperty, defaultSpaceId));
     }
 
     [HttpPost("{propertyId:int}/spaces")]

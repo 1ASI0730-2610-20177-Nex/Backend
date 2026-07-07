@@ -6,9 +6,9 @@ namespace Electro.Corporation.Platform.Devices.Interfaces.Rest.Transform;
 
 public static class PropertyResourceFromEntityAssembler
 {
-    public static PropertyResource ToResourceFromEntity(Property property)
+    public static PropertyResource ToResourceFromEntity(Property property, int defaultSpaceId)
     {
-        return new PropertyResource(property.Id, property.Name, property.Type, property.UserId);
+        return new PropertyResource(property.Id, property.Name, property.Type, property.UserId, defaultSpaceId);
     }
 }
 
